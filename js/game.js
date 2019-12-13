@@ -15,8 +15,8 @@ export class Game {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.gamestate = GAMESTATE.MENU;
-    // this.music = document.querySelector("#gameMusic");
-    // this.music.loop = true;
+    this.music = document.querySelector("#gameMusic");
+    this.music.loop = true;
     this.gameObjects = [];
     new InputHandler(this);
 
@@ -27,7 +27,7 @@ export class Game {
     this.gameObjects = [this.player];
     this.gamestate = GAMESTATE.RUNNING;
 
-    // this.music.play()
+    this.music.play()
   }
   update(deltaTime){
     if(
