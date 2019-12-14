@@ -21,10 +21,10 @@ export default class InputHandler {
           game.togglePause();
           break;
         case 13:
-          // game.start();
-          console.log(GAMESTATE)
           if(game.gamestate == GAMESTATE.MENU){
             game.start();
+          } else if(game.gamestate == GAMESTATE.RUNNING){
+            game.stop();
           }
           break;
       }

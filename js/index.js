@@ -12,38 +12,38 @@ import {Game} from "./game.js"
 //   "#F6D6BD" //white
 // ]
 
-//https://lospec.com/palette-list/pollen8
-// const colorScheme = [
-//  "#73464c", //black
-//   "#ab5675", //dark
-//   "#34acba", //dark-medium cool
-//   "#ee6a7c", //dark-medium warm
-//   "#72dcbb", //medium
-//   "#ffa7a5", //medium-light
-//   "#ffe07e", //light
-//   "#ffe7d6" //white
-// ]
-
-//https://lospec.com/palette-list/ammo-8
+// https://lospec.com/palette-list/pollen8
 const colorScheme = [
- "#040c06", //black
-  "#112318", //dark
-  "#1e3a29", //dark-medium cool
-  "#305d42", //dark-medium warm
-  "#4d8061", //medium
-  "#89a257", //medium-light
-  "#bedc7f", //light
-  "#eeffcc" //white
+ "#73464c", //black
+  "#ab5675", //dark
+  "#34acba", //dark-medium cool
+  "#ee6a7c", //dark-medium warm
+  "#72dcbb", //medium
+  "#ffa7a5", //medium-light
+  "#ffe07e", //light
+  "#ffe7d6" //white
 ]
 
+//https://lospec.com/palette-list/ammo-8
+// const colorScheme = [
+//  "#040c06", //black
+//   "#112318", //dark
+//   "#1e3a29", //dark-medium cool
+//   "#305d42", //dark-medium warm
+//   "#4d8061", //medium
+//   "#89a257", //medium-light
+//   "#bedc7f", //light
+//   "#eeffcc" //white
+// ]
 
-const font = "DPComic";
+
+const fonts = ["DPComic", "VT323"];
 
 
 let body = document.querySelector("body")
 body.style.backgroundColor = colorScheme[4];
 body.style.color = colorScheme[1];
-body.style.font = "2em " + font;
+body.style.font = "2em " + fonts[0];
 let meta = document.querySelector("#metaInf")
 let colorContainer = document.querySelector("#colorContainer")
 meta.append(colorContainer)
@@ -80,7 +80,7 @@ function gameLoop(timestamp){
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
   game.update(timeSinceRedraw);
-  game.draw(ctx, colorScheme, font);
+  game.draw(ctx, colorScheme, fonts);
 
   requestAnimationFrame(gameLoop);
 
