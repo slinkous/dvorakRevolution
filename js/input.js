@@ -5,18 +5,6 @@ export default class InputHandler {
     this.inputStates = {}
     document.addEventListener("keydown", event => {
       switch(event.keyCode){
-        case 37:
-          this.inputStates["left"] = true;
-          break;
-        case 38:
-          this.inputStates["up"] = true;
-          break;
-        case 39:
-          this.inputStates["right"] = true;
-          break;
-        case 40:
-          this.inputStates["down"] = true;
-          break;
         case 27:
           game.togglePause();
           break;
@@ -31,20 +19,10 @@ export default class InputHandler {
       this.inputStates[event.keyCode] = true;
     });
     document.addEventListener("keyup", event => {
-      switch(event.keyCode){
-        case 37:
-          this.inputStates["left"] = false;
-          break;
-        case 38:
-          this.inputStates["up"] = false;
-          break;
-        case 39:
-          this.inputStates["right"] = false;
-          break;
-        case 40:
-          this.inputStates["down"] = false;
-          break;
-      }
+      // switch(event.keyCode){
+      //
+      // }
+      this.inputStates[event.keyCode] = false;
     });
   }
 };

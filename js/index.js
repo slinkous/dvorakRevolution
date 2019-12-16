@@ -13,28 +13,28 @@ import {Game} from "./game.js"
 // ]
 
 // https://lospec.com/palette-list/pollen8
-const colorScheme = [
- "#73464c", //black
-  "#ab5675", //dark
-  "#34acba", //dark-medium cool
-  "#ee6a7c", //dark-medium warm
-  "#72dcbb", //medium
-  "#ffa7a5", //medium-light
-  "#ffe07e", //light
-  "#ffe7d6" //white
-]
+// const colorScheme = [
+//  "#73464c", //black
+//   "#ab5675", //dark
+//   "#34acba", //dark-medium cool
+//   "#ee6a7c", //dark-medium warm
+//   "#72dcbb", //medium
+//   "#ffa7a5", //medium-light
+//   "#ffe07e", //light
+//   "#ffe7d6" //white
+// ]
 
 //https://lospec.com/palette-list/ammo-8
-// const colorScheme = [
-//  "#040c06", //black
-//   "#112318", //dark
-//   "#1e3a29", //dark-medium cool
-//   "#305d42", //dark-medium warm
-//   "#4d8061", //medium
-//   "#89a257", //medium-light
-//   "#bedc7f", //light
-//   "#eeffcc" //white
-// ]
+const colorScheme = [
+ "#040c06", //black
+  "#112318", //dark
+  "#1e3a29", //dark-medium cool
+  "#305d42", //dark-medium warm
+  "#4d8061", //medium
+  "#89a257", //medium-light
+  "#bedc7f", //light
+  "#eeffcc" //white
+]
 
 
 const fonts = ["DPComic", "VT323"];
@@ -61,8 +61,8 @@ meta.append(fc)
 let canvas = document.querySelector("#gameCanvas");
 let ctx = canvas.getContext("2d");
 
-const GAME_WIDTH = 512;
-const GAME_HEIGHT = 512;
+const GAME_WIDTH = 500;
+const GAME_HEIGHT = 800;
 canvas.width = GAME_WIDTH;
 canvas.height = GAME_HEIGHT;
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);

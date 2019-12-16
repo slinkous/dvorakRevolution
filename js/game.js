@@ -1,8 +1,8 @@
-import InputHandler from "/js/input.js";
-import Player from "/js/player.js";
-import Sprite from "/js/sprite.js"
-import TileMap from "/js/tile.js"
-import Letter from "/js/letter.js"
+import InputHandler from "./input.js";
+import Player from "./player.js";
+import Sprite from "./sprite.js"
+import TileMap from "./tile.js"
+import Level from "./level.js"
 
 export const GAMESTATE = {
   PAUSED: 0,
@@ -19,18 +19,10 @@ export class Game {
     this.music = document.querySelector("#gameMusic");
     this.music.loop = true;
     this.gameObjects = [];
-    new InputHandler(this);
+    this.input = new InputHandler(this);
     this.letters = [];
     this.line = [];
-    for(let i=0; i<16; i++){
-      let k = new Letter("-", i)
-      k.y =  448;
-      this.line.push(k)
-    }
-    let l = new Letter("A", 1)
-    l.y = 0;
-    l.active = true;
-    this.letters.push(l)
+    this.level = new Level();
   }
 
   start(){
@@ -38,7 +30,7 @@ export class Game {
     this.gameObjects = [this.player];
     this.gamestate = GAMESTATE.RUNNING;
 
-    // this.music.play()
+    this.music.play()
   }
   update(deltaTime){
     if(
@@ -46,18 +38,20 @@ export class Game {
       this.gamestate === GAMESTATE.MENU ||
       this.gamestate === GAMESTATE.GAMEOVER
     ) return;
-    this.letters[0].move();
+    this.level.update(deltaTime, this.input.inputStates);
   }
   draw(ctx, colorScheme, fonts){
 
     // ctx.save();
-    for(let i = 0; i < this.letters.length; i++){
-      this.letters[i].draw(ctx, colorScheme, fonts)
+    // for(let i = 0; i < this.letters.length; i++){
+    //   this.letters[i].draw(ctx, colorScheme, fonts)
+    // }
+    ctx.font = "36px " + fonts[0];
+    ctx.fillStyle = colorScheme[2];
+    for(var i=0; i<10; i++){
+      ctx.fillText("_", 50+(50*i), this.gameHeight-100);
     }
-    for(let i = 0; i < this.line.length; i++){
-      this.line[i].draw(ctx, colorScheme, fonts)
-      console.log(this.line[i])
-    }
+    this.level.draw(ctx, colorScheme, fonts);
     // ctx.restore();
 
     if(this.gamestate === GAMESTATE.PAUSED){
@@ -66,7 +60,7 @@ export class Game {
       ctx.fill();
 
       ctx.font = "3em " + fonts[0];
-      ctx.fillStyle = colorScheme[4];
+      ctx.fillStyle = colorScheme[3];
       ctx.textAlign = "center";
       ctx.fillText("Paused", this.gameWidth/2, this.gameHeight/2);
     }
